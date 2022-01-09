@@ -5,7 +5,7 @@ const generateBtn = document.querySelector("#generate");
 const writePassword = () => {
   const password = generatePassword();
   const passwordText = document.querySelector("#password");
-  passwordText.value = password;
+  passwordText.innerHTML = password;
 };
 
 // Add event listener to generate button
@@ -139,10 +139,21 @@ const createPassword = (length, lowercase, uppercase, numeric, special) => {
     allChars = allChars + specialChars;
     console.log(allChars);
   }
+
+  // Select random characters from allChars string
+  let password = "";
+  for (i = 0; i < length; i++) {
+    password =
+      password + allChars.charAt(Math.floor(Math.random() * allChars.length));
+  }
+  console.log(length);
+  console.log(password);
+  console.log(password.length);
 };
 
 // Reset password generator
 const resetGenerator = () => {
   console.log("Reset");
-  const passwordText = document.querySelector("#password");
+  // const passwordText = document.querySelector("#password");
+  // passwordText.textContent = "";
 };
