@@ -1,28 +1,21 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-// Write password to the #password input
-function writePassword() {
+// Write password to the #password input. Updated to arrow function
+const writePassword = () => {
   const password = generatePassword();
   const passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-}
+};
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 // Password length prompt and validation
 const passLengthFunc = () => {
   const passLength = window.prompt(
     "Password length - Please enter a number between 8 and 128: "
   );
-  // if (passLength < 8 || passLength > 128) {
-  //   window.alert("Please enter a number between 8 and 128.");
-  //   return false;
-  // } else {
-  //   return passLength;
-  // }
   return passLength;
 };
 
@@ -58,14 +51,15 @@ const passSpecialFunc = () => {
   return passSpecial;
 };
 
-// Generate Password function
-function generatePassword() {
+// Ask user for desired password requirements
+const generatePassword = () => {
   // Ask user for desired password length
   const passwordLength = passLengthFunc();
   console.log(passwordLength);
   // Validate password length
   if (passwordLength < 8 || passwordLength > 128) {
     window.alert("Please enter a number between 8 and 128.");
+    resetGenerator();
   } else {
     // Ask user if password should contain lowercase characters
     const passwordLowercase = passLowercaseFunc();
@@ -86,30 +80,34 @@ function generatePassword() {
       !passwordNumeric &&
       !passwordSpecial
     ) {
+      // Tell user password must meet requirement and reset
       console.log("At least one character type must be selected.");
       window.alert("At least one character type must be selected.");
+      resetGenerator();
     } else {
-      console.log("hi");
+      // Create password
+      createPassword(
+        passwordLowercase,
+        passwordUppercase,
+        passwordNumeric,
+        passwordSpecial
+      );
     }
   }
-}
+};
 
-// Pseudo code
-// Click button then
+// Create Password based on user requirements
+const createPassword = (lowercase, uppercase, numeric, special) => {
+  // Create password
+  console.log("Create password");
+  console.log(`Lowercase: ${lowercase}`);
+  console.log(`Uppercase: ${uppercase}`);
+  console.log(`Numeric: ${numeric}`);
+  console.log(`Special: ${special}`);
+};
 
-// open prompts for password criteria
-
-// prompts:
-// 1. Length 8 to 128 chars. /
-
-// 2. lowercase /
-
-// 3. uppercase /
-
-// 4. numeric /
-
-// 5. special /
-
-// Validate At least one char type selected /
-
-//
+// Reset password generator
+const resetGenerator = () => {
+  console.log("Reset");
+  const passwordText = document.querySelector("#password");
+};
