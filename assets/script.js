@@ -87,6 +87,7 @@ const generatePassword = () => {
     } else {
       // Create password
       createPassword(
+        passwordLength,
         passwordLowercase,
         passwordUppercase,
         passwordNumeric,
@@ -97,13 +98,32 @@ const generatePassword = () => {
 };
 
 // Create Password based on user requirements
-const createPassword = (lowercase, uppercase, numeric, special) => {
+const createPassword = (length, lowercase, uppercase, numeric, special) => {
   // Create password
   console.log("Create password");
+  console.log(`Length: ${length}`);
   console.log(`Lowercase: ${lowercase}`);
   console.log(`Uppercase: ${uppercase}`);
   console.log(`Numeric: ${numeric}`);
   console.log(`Special: ${special}`);
+
+  // All characters to be used for the password
+  let allChars = "";
+
+  // Lowercase characters
+  const lowerChars = "abc";
+  // Lowercase characters
+  const upperChars = "ABC";
+  // Lowercase characters
+  const numericChars = "123";
+  // Special characters
+  const specialChars = "-#*";
+
+  // If lowercase is true add to allChars
+  if (lowercase) {
+    allChars = allChars + lowerChars;
+    console.log(allChars);
+  }
 };
 
 // Reset password generator
