@@ -12,22 +12,21 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Password length function
-// const passLengthFunc = () => {
-
-// }
+// Password length prompt and validation
+const passLengthFunc = () => {
+  const passLength = window.prompt(
+    "Password length - Please enter a number between 8 and 128: "
+  );
+  if (passLength < 8 || passLength > 128) {
+    window.alert("Please enter a number between 8 and 128.");
+  }
+  return passLength;
+};
 
 // Generate Password function
 function generatePassword() {
   // Ask user for desired password length
-  const passwordLength = window.prompt(
-    "Password length - Please enter a number between 8 and 128: "
-  );
-  if (passwordLength < 8 || passwordLength > 128) {
-    window.alert("Please enter a number between 8 and 128.");
-  } else {
-    console.log("perfect");
-  }
+  const passwordLength = passLengthFunc();
 }
 
 // Pseudo code
