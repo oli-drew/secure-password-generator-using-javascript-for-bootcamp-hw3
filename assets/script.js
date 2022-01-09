@@ -19,8 +19,10 @@ const passLengthFunc = () => {
   );
   if (passLength < 8 || passLength > 128) {
     window.alert("Please enter a number between 8 and 128.");
+    return false;
+  } else {
+    return passLength;
   }
-  return passLength;
 };
 
 // Password lowercase prompt
@@ -39,6 +41,14 @@ const passUppercaseFunc = () => {
   return passUppercase;
 };
 
+// Password numeric prompt
+const passNumericFunc = () => {
+  const passNumeric = window.confirm(
+    "Should the password include numeric characters? Select OK for YES or CANCEL for NO."
+  );
+  return passNumeric;
+};
+
 // Generate Password function
 function generatePassword() {
   // Ask user for desired password length
@@ -50,6 +60,9 @@ function generatePassword() {
   // Ask user if password should contain UPPERCASE characters
   const passwordUppercase = passUppercaseFunc();
   console.log(passwordUppercase);
+  // Ask user if password should contain numeric characters
+  const passwordNumeric = passNumericFunc();
+  console.log(passwordNumeric);
 }
 
 // Pseudo code
@@ -58,11 +71,11 @@ function generatePassword() {
 // open prompts for password criteria
 
 // prompts:
-// 1. Length 8 to 128 chars.
+// 1. Length 8 to 128 chars. /
 
-// 2. lowercase
+// 2. lowercase /
 
-// 3. uppercase
+// 3. uppercase /
 
 // 4. numeric
 
