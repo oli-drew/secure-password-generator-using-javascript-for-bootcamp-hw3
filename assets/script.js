@@ -124,6 +124,21 @@ const createPassword = (length, lowercase, uppercase, numeric, special) => {
     allChars = allChars + lowerChars;
     console.log(allChars);
   }
+  // If uppercase is true add to allChars
+  if (uppercase) {
+    allChars = allChars + upperChars;
+    console.log(allChars);
+  }
+  // If numeric is true add to allChars
+  if (numeric) {
+    allChars = allChars + numericChars;
+    console.log(allChars);
+  }
+  // If special is true add to allChars
+  if (special) {
+    allChars = allChars + specialChars;
+    console.log(allChars);
+  }
 };
 
 // Reset password generator
