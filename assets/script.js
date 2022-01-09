@@ -17,12 +17,13 @@ const passLengthFunc = () => {
   const passLength = window.prompt(
     "Password length - Please enter a number between 8 and 128: "
   );
-  if (passLength < 8 || passLength > 128) {
-    window.alert("Please enter a number between 8 and 128.");
-    return false;
-  } else {
-    return passLength;
-  }
+  // if (passLength < 8 || passLength > 128) {
+  //   window.alert("Please enter a number between 8 and 128.");
+  //   return false;
+  // } else {
+  //   return passLength;
+  // }
+  return passLength;
 };
 
 // Password lowercase prompt
@@ -49,20 +50,48 @@ const passNumericFunc = () => {
   return passNumeric;
 };
 
+// Password special characters prompt
+const passSpecialFunc = () => {
+  const passSpecial = window.confirm(
+    "Should the password include special characters? Select OK for YES or CANCEL for NO."
+  );
+  return passSpecial;
+};
+
 // Generate Password function
 function generatePassword() {
   // Ask user for desired password length
   const passwordLength = passLengthFunc();
   console.log(passwordLength);
-  // Ask user if password should contain lowercase characters
-  const passwordLowercase = passLowercaseFunc();
-  console.log(passwordLowercase);
-  // Ask user if password should contain UPPERCASE characters
-  const passwordUppercase = passUppercaseFunc();
-  console.log(passwordUppercase);
-  // Ask user if password should contain numeric characters
-  const passwordNumeric = passNumericFunc();
-  console.log(passwordNumeric);
+  // Validate password length
+  if (passwordLength < 8 || passwordLength > 128) {
+    window.alert("Please enter a number between 8 and 128.");
+  } else {
+    // Ask user if password should contain lowercase characters
+    const passwordLowercase = passLowercaseFunc();
+    console.log(passwordLowercase);
+    // Ask user if password should contain UPPERCASE characters
+    const passwordUppercase = passUppercaseFunc();
+    console.log(passwordUppercase);
+    // Ask user if password should contain numeric characters
+    const passwordNumeric = passNumericFunc();
+    console.log(passwordNumeric);
+    // Ask user if password should contain special characters
+    const passwordSpecial = passSpecialFunc();
+    console.log(passwordSpecial);
+    // Validate at least one char type selected
+    if (
+      !passwordLowercase &&
+      !passwordUppercase &&
+      !passwordNumeric &&
+      !passwordSpecial
+    ) {
+      console.log("At least one character type must be selected.");
+      window.alert("At least one character type must be selected.");
+    } else {
+      console.log("hi");
+    }
+  }
 }
 
 // Pseudo code
@@ -77,10 +106,10 @@ function generatePassword() {
 
 // 3. uppercase /
 
-// 4. numeric
+// 4. numeric /
 
-// 5. special
+// 5. special /
 
-// Validate At least one char type selected
+// Validate At least one char type selected /
 
 //
