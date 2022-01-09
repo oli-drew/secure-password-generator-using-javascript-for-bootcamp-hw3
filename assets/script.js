@@ -1,8 +1,11 @@
-// Assignment Code
+// Password Generator
+
+// Select the Generate Password button
 const generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input. Updated to arrow function
 const writePassword = () => {
+  resetGenerator();
   const password = generatePassword();
   const passwordText = document.querySelector("#password");
   passwordText.innerHTML = password;
@@ -55,7 +58,7 @@ const passSpecialFunc = () => {
 const generatePassword = () => {
   // Ask user for desired password length
   const passwordLength = passLengthFunc();
-  console.log(passwordLength);
+  // console.log(passwordLength);
   // Validate password length
   if (passwordLength < 8 || passwordLength > 128) {
     window.alert("Please enter a number between 8 and 128.");
@@ -63,16 +66,16 @@ const generatePassword = () => {
   } else {
     // Ask user if password should contain lowercase characters
     const passwordLowercase = passLowercaseFunc();
-    console.log(passwordLowercase);
+    // console.log(passwordLowercase);
     // Ask user if password should contain UPPERCASE characters
     const passwordUppercase = passUppercaseFunc();
-    console.log(passwordUppercase);
+    // console.log(passwordUppercase);
     // Ask user if password should contain numeric characters
     const passwordNumeric = passNumericFunc();
-    console.log(passwordNumeric);
+    // console.log(passwordNumeric);
     // Ask user if password should contain special characters
     const passwordSpecial = passSpecialFunc();
-    console.log(passwordSpecial);
+    // console.log(passwordSpecial);
     // Validate at least one char type selected
     if (
       !passwordLowercase &&
@@ -81,12 +84,12 @@ const generatePassword = () => {
       !passwordSpecial
     ) {
       // Tell user password must meet requirement and reset
-      console.log("At least one character type must be selected.");
+      // console.log("At least one character type must be selected.");
       window.alert("At least one character type must be selected.");
       resetGenerator();
     } else {
       // Create password
-      createPassword(
+      return createPassword(
         passwordLength,
         passwordLowercase,
         passwordUppercase,
@@ -100,7 +103,7 @@ const generatePassword = () => {
 // Create Password based on user requirements
 const createPassword = (length, lowercase, uppercase, numeric, special) => {
   // Create password
-  console.log("Create password");
+  // console.log("Create password");
   console.log(`Length: ${length}`);
   console.log(`Lowercase: ${lowercase}`);
   console.log(`Uppercase: ${uppercase}`);
@@ -110,34 +113,34 @@ const createPassword = (length, lowercase, uppercase, numeric, special) => {
   // All characters to be used for the password
   let allChars = "";
 
-  // Lowercase characters
-  const lowerChars = "abc";
-  // Lowercase characters
-  const upperChars = "ABC";
-  // Lowercase characters
-  const numericChars = "123";
+  // // Lowercase characters
+  // const lowerChars = "abcdefghijklmnopqrstuvwxyz";
+  // // Lowercase characters
+  // const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // // Lowercase characters
+  // const numericChars = "0123456789";
   // Special characters
-  const specialChars = "-#*";
+  const specialChars = "~`!@#$%^&*()_+-={}[]:\";'<>?,./|\\";
 
   // If lowercase is true add to allChars
   if (lowercase) {
-    allChars = allChars + lowerChars;
-    console.log(allChars);
+    allChars = allChars + "abcdefghijklmnopqrstuvwxyz";
+    // console.log(allChars);
   }
   // If uppercase is true add to allChars
   if (uppercase) {
-    allChars = allChars + upperChars;
-    console.log(allChars);
+    allChars = allChars + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    // console.log(allChars);
   }
   // If numeric is true add to allChars
   if (numeric) {
-    allChars = allChars + numericChars;
-    console.log(allChars);
+    allChars = allChars + "0123456789";
+    // console.log(allChars);
   }
   // If special is true add to allChars
   if (special) {
-    allChars = allChars + specialChars;
-    console.log(allChars);
+    allChars = allChars + "~`!@#$%^&*()_+-={}[]:\";'<>?,./|\\";
+    // console.log(allChars);
   }
 
   // Select random characters from allChars string
@@ -146,14 +149,12 @@ const createPassword = (length, lowercase, uppercase, numeric, special) => {
     password =
       password + allChars.charAt(Math.floor(Math.random() * allChars.length));
   }
-  console.log(length);
-  console.log(password);
-  console.log(password.length);
+  return password;
 };
 
 // Reset password generator
 const resetGenerator = () => {
   console.log("Reset");
-  // const passwordText = document.querySelector("#password");
-  // passwordText.textContent = "";
+  const passwordText = document.querySelector("#password");
+  passwordText.innerHTML = "";
 };
