@@ -23,10 +23,22 @@ const passLengthFunc = () => {
   return passLength;
 };
 
+// Password lowercase prompt
+const passLowercaseFunc = () => {
+  const passLowercase = window.confirm(
+    "Should the password include lowercase characters? Select OK for YES or CANCEL for NO."
+  );
+  return passLowercase;
+};
+
 // Generate Password function
 function generatePassword() {
   // Ask user for desired password length
   const passwordLength = passLengthFunc();
+  console.log(passwordLength);
+  // Ask user if password should contain lowercase characters
+  const passwordLowercase = passLowercaseFunc();
+  console.log(passwordLowercase);
 }
 
 // Pseudo code
