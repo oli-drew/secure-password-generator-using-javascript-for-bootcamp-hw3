@@ -31,6 +31,14 @@ const passLowercaseFunc = () => {
   return passLowercase;
 };
 
+// Password Uppercase prompt
+const passUppercaseFunc = () => {
+  const passUppercase = window.confirm(
+    "Should the password include UPPERCASE characters? Select OK for YES or CANCEL for NO."
+  );
+  return passUppercase;
+};
+
 // Generate Password function
 function generatePassword() {
   // Ask user for desired password length
@@ -39,6 +47,9 @@ function generatePassword() {
   // Ask user if password should contain lowercase characters
   const passwordLowercase = passLowercaseFunc();
   console.log(passwordLowercase);
+  // Ask user if password should contain UPPERCASE characters
+  const passwordUppercase = passUppercaseFunc();
+  console.log(passwordUppercase);
 }
 
 // Pseudo code
